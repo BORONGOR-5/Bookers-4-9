@@ -1,0 +1,102 @@
+<!--<header class="navbar navbar-fixed-top navbar-inverse">-->
+<!--  <div class="container">-->
+<!--    <nav class='nav navbar-nav navbar-left' >-->
+<!--      <span>Bookers</span>-->
+<!--    </nav>-->
+<!--    <nav>-->
+<!--      <ul class="nav navbar-nav navbar-right">-->
+<!--          <li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>-->
+<!--          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>-->
+          <!--<li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
+<!--          <li><a class="glyphicon glyphicon-sign-in sign up" href="/users/sign_up"> sign up</a></li>-->
+<!--          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>-->
+<!--      </ul>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--</header>-->
+
+
+  	<div class='body'>
+      <div class='container'>
+
+        <p id="notice"></p>
+
+
+      	<div class='row'>
+  
+  <div class='col-xs-3'>
+    <h2>User info</h2>
+    <table class='table'>
+      <tr><img class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" /></tr> 
+      <tr>
+    	  <th>name</th>
+    	  <th>細山田</th>
+      </tr>
+      <tr>
+    	  <th>introduction</th>
+    	  <th>123456</th>
+      </tr>
+</table>
+
+<div class='row'>
+  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_24734" href="/users/24734/edit"></a>
+</div>
+
+    <h2>New book</h2>
+    <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="FS06yp9AejpF6JREeALQtzbcL7QKqQlsz3OAzc4Pi5k21EdZSB/hvGvepSvsfFdAMyPgx4H/9iVdWlwfhdwR2g==" />
+  <div class="field row">
+    <label for="book_title">Title</label>
+    <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
+  </div>
+
+  <div class="field row">
+    <label for="book_opinion">Opinion</label>
+    <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
+</textarea>
+  </div>
+
+  <div class="actions row">
+    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
+  </div>
+</form>
+
+  </div>
+
+  <div class='col-xs-9'>
+    <h2>Users</h2>
+
+    <table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" /></td>
+        <td>yama</td>
+        <td><a class="user_24731" href="/users/24731">Show</a></td>
+      </tr>
+
+  </tbody>
+</table>
+
+  </div>
+
+</div>
+      </div>
+    </div>
+
+
+<!--<footer>-->
+<!--  <div class='container'>-->
+<!--  	<div class='row'>-->
+<!--    	<div class='col-xs-3 col-xs-offset-9'>-->
+<!--    		<p>CopyRight Infratop.inc</p>-->
+<!--    	</div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</footer>-->
