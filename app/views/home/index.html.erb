@@ -1,19 +1,19 @@
-<!--<header class="navbar navbar-fixed-top navbar-inverse">-->
-<!--  <div class="container">-->
-<!--    <nav class='nav navbar-nav navbar-left' >-->
-<!--      <span>Bookers</span>-->
-<!--    </nav>-->
-<!--    <nav>-->
-<!--      <ul class="nav navbar-nav navbar-right">-->
-<!--          <li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>-->
-<!--          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>-->
-<!--          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
-<!--          <li><a class="glyphicon glyphicon-sign-in sign up" href="/users/sign_up"> sign up</a></li>-->
-<!--          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>-->
-<!--      </ul>-->
-<!--    </nav>-->
-<!--  </div>-->
-<!--</header>-->
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
+      <span>Bookers</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>
+          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
+          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
+          <li><a class="glyphicon glyphicon-sign-in sign up" href="/users/sign_up"> sign up</a></li>
+          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 
 
@@ -30,11 +30,12 @@
       <p> about various books!</p>
     <div class="btn-wrapper">
       <div class="row">
-        
-         <p><a class="btn btn-info col-xs-10 col-xs-offset-1 sign_in" href="/users/sign_in">Log in</a></p>
+        <%= link_to 'Log in', user_session_path, class: "btn btn-info col-xs-10 col-xs-offset-1 sign_in" %>
+         <!--<p><a class="btn btn-info col-xs-10 col-xs-offset-1 sign_in" href="/users/sign_in">Log in</a></p>-->
       </div>
       <div class="row">
-        <p><a class="btn btn-success col-xs-10 col-xs-offset-1 sign_up" href="/users/sign_up">Sign Up</a></p>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-success col-xs-10 col-xs-offset-1 sign_up" %>
+        <!--<p><a class="btn btn-success col-xs-10 col-xs-offset-1 sign_up" href="/users/sign_up">Sign Up</a></p>-->
       </div>
     </div>
   </div>

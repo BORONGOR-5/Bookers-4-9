@@ -1,3 +1,20 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
+      <span>Bookers</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>
+          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
+          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
+          <li><a class="glyphicon glyphicon-sign-in sign up" href="/users/sign_up"> sign up</a></li>
+          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 <h2>Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
