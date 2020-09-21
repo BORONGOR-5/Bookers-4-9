@@ -1,20 +1,26 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+ <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
       <span>Bookers</span>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>
-          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
-          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
-          <li><a class="glyphicon glyphicon-sign-in sign up" href="/users/sign_up"> sign up</a></li>
-          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+          <!--<li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>-->
+          <!--users_show-->
+          <li class><%= link_to 'Home', user_path %></li>　　　　　ここがエラー
+          <!--<li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li> -->
+          <!--users_index-->
+          <li class><%= link_to 'About', users_path %></li>
+          <!--<li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
+          <!--books_index-->
+          <li class><%= link_to 'sign up',  new_user_registration_path %></li>
+          <!--<li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>-->
+          <!--home_index-->
+          <li class><%= link_to 'login', new_user_session_path %></li>
       </ul>
     </nav>
   </div>
 </header>
-
 
 
 
@@ -46,12 +52,12 @@
 
 
 
-<!--<footer>-->
-<!--  <div class='container'>-->
-<!--  	<div class='row'>-->
-<!--    	<div class='col-xs-3 col-xs-offset-9'>-->
-<!--    		<p>CopyRight Infratop.inc</p>-->
-<!--    	</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</footer>-->
+<footer>
+  <div class='container'>
+  	<div class='row'>
+    	<div class='col-xs-3 col-xs-offset-9'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
