@@ -7,8 +7,9 @@
         <h2>User info</h2>
           <table class='table'>
             <tr>
-              <th></th>
-              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+              <% if @user.image? %>                                                              
+                <%= image_tag @user.image.url %>
+              <% end %>
             </tr>
             <tr>
     	        <th>name</th>

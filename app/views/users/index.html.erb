@@ -9,8 +9,9 @@
         <h2>User info</h2>
           <table class='table'>
             <tr>
-              <th></th>
-              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+              <% if @user.image? %>                                                              
+                <%= image_tag @user.image.url %>
+              <% end %>
             </tr>
             <tr>
     	        <th>name</th>
@@ -61,16 +62,13 @@
           </thead>
 
           <tbody>
-          <!--<tr>-->
-          <!--  <td><img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" /></td>-->
-          <!--  <td>yama</td>-->
-          <!--  <td><a class="user_24731" href="/users/24731">Show</a></td>-->
-          <!--</tr>-->
-            <tr>
-              <td><img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" /></td>
-              <td>yama</td>
-              <td><a class="book_path" href="/books/book_path">Show</a></td>
-            </tr>
+            <% @users.each do |user| %>
+              <div class="user">
+                <td="user-profile_image_id"><%= link_to "user.profile_image_id", user_path(@user) %></td>
+                <td="user-name"><%= user.name %></td></td>
+                <td="show"><%= link_to 'Show', user_path(current_user) %></td>
+              </div>
+            <% end %>
           </tbody>
         </table>
 

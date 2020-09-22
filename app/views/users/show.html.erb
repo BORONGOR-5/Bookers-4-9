@@ -10,8 +10,9 @@
         <h2>User info</h2>
           <table class='table'>
             <tr>
-              <th></th>
-              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+              <% if @user.image? %>                                                              
+                <%= image_tag @user.image.url %>
+              <% end %>
             </tr>
             <tr>
     	        <th>name</th>
@@ -52,7 +53,7 @@
 
       <table class='table table-hover table-inverse'>
         <thead>
-          <tr> 
+          <tr>
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
@@ -61,15 +62,13 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td><a href="/users/24734">
-              <img class="attachment user profile_image" src="/attachments/0827ef6519f54ade04cd9e38b7496ae18f81fded/store/fill/50/50/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" />
-            </a></td>
-            <td><a class="book_38686" href="/books/38686">onepiece</a></td>
-            <td>jump</td>
-          </tr>
-
-          </tr>
+        <% @books.each do |book| %>
+          <div class="user-show">
+            <td="user-profele_image"><%= link_to "user.profile_image_id", user_path(@user %></td>
+            <td="book-title"><%= link_to "book.title", book_path(@book) %></td>
+            <td="book-body"><%= @book.body %></td>
+          </div>
+        <% end %>
         </tbody>
       </table>
     </div>

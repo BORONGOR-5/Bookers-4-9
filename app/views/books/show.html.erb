@@ -10,8 +10,11 @@
         <h2>User info</h2>
           <table class='table'>
             <tr>
-              <th></th>
-              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+              <% if @user.image? %>                                                              
+                <%= image_tag @user.image.url %>
+              <% end %>
+              
+              <!--<th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />-->
             </tr>
             <tr>
     	        <th>name</th>
@@ -55,17 +58,16 @@
 		    <h2>Book detail</h2>
 		    <table class='table'>
 		      <tr>
-            <td><a href="/users/24734">
-              <img class="attachment user profile_image" src="/attachments/343ecc65297c9e523f75c975c7fad366f1cc865d/store/fill/100/100/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" /><br>
-              細山田
-            </a></td>
-            <td><%= link_to "@book.title", edit_book_path(@book) %></td>
+            <td><%= link_to "@user", user_path %></td>
+            <!--名前と画像の表示方法がわからない-->
+            <td><%= link_to "@book.title", book_path(@book) %></td>
             <td><%= @book.body %></td>
-
+            <% if @user.id == current_user.id %>
               <!--<td><a class="btn-sm btn-success edit_book_38686" href="/books/38686/edit">Edit</a></td>-->
               <td><%= link_to "Edit", edit_book_path(@book) %></td>
               <!--<td><a data-confirm="本当に消しますか？" class="btn-sm btn-danger destroy_book_38686" rel="nofollow" data-method="delete" href="/books/38686">Destroy</a></td>-->
               <td><%= link_to "Destroy", books_path, method: :delete, data: { confirm: "本当に消しますか？" } %></td>
+            <% end %>
           </tr>
         </table>
 
