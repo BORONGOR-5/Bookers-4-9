@@ -1,28 +1,3 @@
- <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class='nav navbar-nav navbar-left' >
-      <span>Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <!--<li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>-->
-          <!--users_show-->
-          <li class><%= link_to 'Home', user_path %></li>　　　　　ここがエラー
-          <!--<li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li> -->
-          <!--users_index-->
-          <li class><%= link_to 'Users', users_path %></li>
-          <!--<li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
-          <!--books_index-->
-          <li class><%= link_to 'Books',  books_path %></li>
-          <!--<li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>-->
-          <!--home_index-->
-          <li class><%= link_to 'logout', root_path %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-
 <div class='body'>
   <div class='container'>
     <p id="notice"></p>
@@ -34,7 +9,7 @@
             <tr>
               <th></th>
               <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
-            </tr> 
+            </tr>
             <tr>
     	        <th>name</th>
     	        <th class="name"><%= @user.name %></th>
@@ -53,29 +28,48 @@
     <!--</div>-->
 
         <h2>New book</h2>
-        <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="lIvG4nDuB6SdT5+YFZvETI0hahuFqhdWS56FFBzFRDhXELNJXJuLHEt2rzLi769Sh+No56jbL0Pio0tw5hDSaw==" />
-          <div class="field row">
-            <label for="book_title">Title</label>
-            <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
-          </div>
 
-          <div class="field row">
-            <label for="book_opinion">Opinion</label>
-            <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
-            </textarea>
+        <% if @book.errors.any? %>
+          <div id='error_explanation'>
+            <h2><%= @book.errors.count %> errors prohihbited this book from being saved:</h2>
+            <% @book.errors.full_messages.each do |msg| %>
+              <ul>
+                <li><%= msg %></li>
+              </ul>
+            <% end %>
           </div>
+        <% end %>
 
-          <div class="actions row">
-            <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
-          </div>
-        </form>
+        <%= form_with model: @book, url: '/books', local:true do |f| %>
+          <h3>Title</h3>
+          <%= f.text_field :title %>
+          <h3>Opinion</h3>
+          <%= f.text_area :body %>
+          <%= f.submit 'Create Book' %>
+        <% end %>
+        <!--<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="lIvG4nDuB6SdT5+YFZvETI0hahuFqhdWS56FFBzFRDhXELNJXJuLHEt2rzLi769Sh+No56jbL0Pio0tw5hDSaw==" />-->
+        <!--  <div class="field row">-->
+        <!--    <label for="book_title">Title</label>-->
+        <!--    <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />-->
+        <!--  </div>-->
+
+        <!--  <div class="field row">-->
+        <!--    <label for="book_opinion">Opinion</label>-->
+        <!--    <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">-->
+        <!--    </textarea>-->
+        <!--  </div>-->
+
+        <!--  <div class="actions row">-->
+        <!--    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />-->
+        <!--  </div>-->
+        <!--</form>-->
       </div>
 
       <div class='col-xs-9'>
         <h2>Books</h2>
         <table class='table table-hover table-inverse'>
           <thead>
-            <tr> 
+            <tr>
               <th></th>
               <th>Title</th>
               <th>Opinion</th>
@@ -86,9 +80,9 @@
           <tbody>
             <% @books.each do |book| %>
               <div class="book-item">
-                <td="book-title"><%= link_to "book.title", book_path(book) %></td>
+                <td="user-profile_image_id"><%= link_to "user.profile_image_id", user_path(@user) %></td>
+                <td="book-title"><%= link_to "book.title", book_path(@book) %></td>
                 <td="book-body"><%= book.body %></td>
-                <td="show-edit-destroy"><%= link_to "@books", book_path(book) %></td>
                 </div>
             <% end %>
           </tbody>
@@ -98,13 +92,3 @@
     </div>
   </div>
 </div>
-    
-<footer>
-  <div class='container'>
-  	<div class='row'>
-    	<div class='col-xs-3 col-xs-offset-9'>
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
-    </div>
-  </div>
-</footer>

@@ -13,7 +13,7 @@
 
 
 
-    <%= form_with model:@book, url: book_path(@book.id), local:true do |f| %>
+    <%= form_with model: @book, url: '/books/@book/edit', local:true do |f| %>
       <h4>Title</h4>
       <%= f.text_field :title %>
       <h4>body</h4>

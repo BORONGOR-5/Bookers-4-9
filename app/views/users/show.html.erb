@@ -1,124 +1,74 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class='nav navbar-nav navbar-left' >
-      <span>Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <!--<li><a class="glyphicon glyphicon-home home" href="/users/24680"> Home</a></li>-->
-          <!--users_show-->
-          <li class><%= link_to 'Home', user_path %></li>
-          <!--<li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li> -->
-          <!--users_index-->
-          <li class><%= link_to 'Users', users_path %></li>
-          <!--<li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
-          <!--books_index-->
-          <li class><%= link_to 'Books',  books_path %></li>
-          <!--<li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>-->
-          <!--home_index-->
-          <li class><%= link_to 'logout', root_path %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-
-
 <div class='body'>
- <div class='container'>
-  <p id="notice"></p>
+  <div class='container'>
+    <p id="notice"></p>
+
     <div class='row'>
       <div class='col-xs-3'>
         <h2>User info</h2>
-        <table class='table'>
-          <tr><img class="attachment user profile_image" src="/attachments/343ecc65297c9e523f75c975c7fad366f1cc865d/store/fill/100/100/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" /></tr> 
-          <tr>
-    	      <th>name</th>
-    	      <th>細山田</th>
-          </tr>
-          <tr>
-    	      <th>introduction</th>
-    	      <th>12345</th>
-          </tr>
-        </table>
+          <table class='table'>
+            <tr>
+              <th></th>
+              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+            </tr>
+            <tr>
+    	        <th>name</th>
+    	        <th class="name"><%= @user.name %></th>
+            </tr>
+            <tr>
+    	        <th>introduction</th>
+    	        <th class="introduction"><%= @user.introduction %></th>
+            </tr>
+            <% if @user.id == current_user.id %>
+              <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+            <% end %>
+          </table>
 
-<div class='row'>
-  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_24734" href="/users/24734/edit"></a>
-</div>
+        <h2>New book</h2>
+        <% if @book.errors.any? %>
+          <div id='error_explanation'>
+            <h2><%= @book.errors.count %> errors prohihbited this book from being saved:</h2>
+            <% @book.errors.full_messages.each do |msg| %>
+              <ul>
+                <li><%= msg %></li>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
 
-    <h2>New book</h2>
-    <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="8Z2gH7YhPyGoYTqJZedZ2ot6CH0qk5W/XsdkSKU2dqAzzT801CDLUGA6xuVDpQKuS2Ig0OspQWEKJ4Avq0eaNA==" />
-  <div class="field row">
-    <label for="book_title">Title</label>
-    <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
-  </div>
-
-  <div class="field row">
-    <label for="book_opinion">Opinion</label>
-    <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
-</textarea>
-  </div>
-
-  <div class="actions row">
-    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
-  </div>
-</form>
-
-  </div>
-
-  <div class='col-xs-9'>
-    <h2>Books</h2>
-
-    <table class='table table-hover table-inverse'>
-  <thead>
-    <tr> 
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><a href="/users/24734">
-          <img class="attachment user profile_image" src="/attachments/0827ef6519f54ade04cd9e38b7496ae18f81fded/store/fill/50/50/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" />
-</a>        </td>
-        <td><a class="book_38686" href="/books/38686">onepiece</a></td>
-        <td>jump</td>
-      </tr>
-      <tr>
-        <td><a href="/users/24734">
-          <img class="attachment user profile_image" src="/attachments/0827ef6519f54ade04cd9e38b7496ae18f81fded/store/fill/50/50/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" />
-</a>        </td>
-        <td><a class="book_38709" href="/books/38709">et</a></td>
-        <td>rt</td>
-      </tr>
-      <tr>
-        <td><a href="/users/24734">
-          <img class="attachment user profile_image" src="/attachments/0827ef6519f54ade04cd9e38b7496ae18f81fded/store/fill/50/50/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" />
-</a>        </td>
-        <td><a class="book_38716" href="/books/38716">aa</a></td>
-        <td>ssaa</td>
-      </tr>
-  </tbody>
-</table>
-  </div>
-</div>
+        <%= form_with model: @book, url: '/books', local:true do |f| %>
+          <h3>Title</h3>
+          <%= f.text_field :title %>
+          <h3>Opinion</h3>
+          <%= f.text_area :body %>
+          <%= f.submit 'Create Book' %>
+        <% end %>
       </div>
-    </div>
 
+      <div class='col-xs-9'>
+        <h2>Books</h2>
 
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr> 
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <tr>
+            <td><a href="/users/24734">
+              <img class="attachment user profile_image" src="/attachments/0827ef6519f54ade04cd9e38b7496ae18f81fded/store/fill/50/50/e4b614dde8552c27b203180e54a181f3e4b647a2945962bfd032904261b0/profile_image" alt="Profile image" />
+            </a></td>
+            <td><a class="book_38686" href="/books/38686">onepiece</a></td>
+            <td>jump</td>
+          </tr>
 
-
-
-<footer>
-  <div class='container'>
-  	<div class='row'>
-    	<div class='col-xs-3 col-xs-offset-9'>
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</footer>
+</div>
