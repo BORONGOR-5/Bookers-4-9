@@ -22,7 +22,6 @@
   </div>
 </header>
 
-一時中断
 
 <div class='body'>
   <div class='container'>
@@ -32,72 +31,73 @@
       <div class='col-xs-3'>
         <h2>User info</h2>
           <table class='table'>
-            <tr><img class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" /></tr> 
+            <tr>
+              <th></th>
+              <th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />
+            </tr> 
             <tr>
     	        <th>name</th>
-    	        <th>細山田</th>
+    	        <th class="name"><%= @user.name %></th>
             </tr>
             <tr>
     	        <th>introduction</th>
-    	        <th>123456</th>
+    	        <th class="introduction"><%= @user.introduction %></th>
             </tr>
+            <% if @user.id == current_user.id %>
+              <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+            <% end %>
           </table>
 
-    <div class='row'>
-      <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_24734" href="/users/24734/edit"></a>
-    </div>
+    <!--<div class='row'>-->
+    <!--  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_24734" href="/users/24734/edit"></a>-->
+    <!--</div>-->
 
         <h2>New book</h2>
         <form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="lIvG4nDuB6SdT5+YFZvETI0hahuFqhdWS56FFBzFRDhXELNJXJuLHEt2rzLi769Sh+No56jbL0Pio0tw5hDSaw==" />
-      <div class="field row">
-        <label for="book_title">Title</label>
-        <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
-      </div>
+          <div class="field row">
+            <label for="book_title">Title</label>
+            <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
+          </div>
 
-      <div class="field row">
-        <label for="book_opinion">Opinion</label>
-        <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
-    </textarea>
-      </div>
+          <div class="field row">
+            <label for="book_opinion">Opinion</label>
+            <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
+            </textarea>
+          </div>
 
-      <div class="actions row">
-        <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
-      </div>
-    </form>
+          <div class="actions row">
+            <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
+          </div>
+        </form>
       </div>
 
       <div class='col-xs-9'>
         <h2>Books</h2>
-
         <table class='table table-hover table-inverse'>
-      <thead>
-        <tr> 
-          <th></th>
-           <th>Title</th>
-          <th>Opinion</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+          <thead>
+            <tr> 
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-      <tbody>
-          <tr>
-        
-           <td><a class="book_38694" href="/books/38694">トラブル知らずのシステム設計</a></td>
-            <td>az</td>
-          </tr>
-          <tr>
-            <td><a href="/users/24741">
-              <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" /></a></td>
-            <td><a class="book_38695" href="/books/38695">Railsチュートリアル</a></td>
-            <td>railsの基礎がしっかり学べます！</td>
-          </tr>
-          <tr>
-       </tbody>
-    </table>
+          <tbody>
+            <% @books.each do |book| %>
+              <div class="book-item">
+                <td="book-title"><%= link_to "book.title", book_path(book) %></td>
+                <td="book-body"><%= book.body %></td>
+                <td="show-edit-destroy"><%= link_to "@books", book_path(book) %></td>
+                </div>
+            <% end %>
+          </tbody>
+
+        </table>
       </div>
     </div>
   </div>
- </div>
+</div>
     
 <footer>
   <div class='container'>
