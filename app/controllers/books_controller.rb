@@ -19,6 +19,8 @@ class BooksController < ApplicationController
 
   def edit
       @book = Book.find(book_params[:id])
+      # @book = Book.find(params[:id])
+      
     # if @book.save
     #   flash[:notice] = "You have updated book successfully."
     #   redirect_to book_path(@book.id)
@@ -57,21 +59,13 @@ class BooksController < ApplicationController
       @books = Book.all
       render :index
     end
-
-
-
   end
 
   def list
-
   end
-
 
   private
   def book_params
     params.require(:book).permit(:title, :body)
   end
-
-
-
 end

@@ -1,31 +1,31 @@
 <div class='body'>
   <div class='container'>
-    <!--<p id="notice"></p>-->
-
-<%= render 'books/list' %>
-
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+    <%= render 'books/list' %>
       <div class='col-xs-9'>
         <h2>Books</h2>
-        <table class='table table-hover table-inverse'>
+        <table class='table'>
           <thead>
+            <tbody> 
             <tr>
               <th></th>
               <th>Title</th>
               <th>Opinion</th>
               <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @books.each do |book| %>
-              <div class="book-item">
-                <td="user-profile_image_id"><%= link_to "user.profile_image_id", user_path(book.user) %></td>
-                <td="book-title"><%= link_to "book.title", book_path(book) %></td>
-                <td="book-body"><%= book.body %></td>
+              <% @books.each do |book| %>
+                <div class="book-item">
+                  <td="user-profile_image_id"><%= attachment_image_tag @user, :profile_image, size: "38", fallback: "no_image.jpg" %>
+                  
+                  <td="book-title"><%= link_to book.title, book_path(book) %><%=  %></td>
+                  <!--<td="book-title"><%= link_to "book.title", book_path(book) %></td>-->
+                  <td="book-body"><%= book.body %></td>
                 </div>
-            <% end %>
-          </tbody>
-
+              <% end %>
+            </tr>
+            </tbody>
+          </thead>
         </table>
       </div>
     </div>

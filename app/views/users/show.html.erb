@@ -6,7 +6,7 @@
 
 
     <%= render 'books/list' %>
-
+<!--books: @books-->
       <div class='col-xs-9'>
         <h2>Books</h2>
 
@@ -24,7 +24,7 @@
           <% @books.each do |book| %>
             <div class="user-show">
               <td="user-profele_image"><%= link_to "user.profile_image_id", user_path(@user) %></td>
-              <td="book-title"><%= link_to "book.title", book_path(book) %></td>
+              <td="book-title"><%= link_to book.title, book_path(book) %></td>
               <td="book-body"><%= book.body %></td>
             </div>
           <% end %>
