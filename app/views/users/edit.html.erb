@@ -14,3 +14,15 @@
         <%= f.text_area :Introduction %>
         <%= f.submit "Update User" %>
       <% end %>
+      
+      
+      
+      <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+          <p>Name</p>
+          <input name="name" value="<%= @user.name %>">
+          <p>Image</p>
+          <input name="image" type="file">
+          <p>Introduction</p>
+          <input name="Introduction" value="<%= @user.email %>">
+          <input type="submit" value="Update User">
+  <% end %>
