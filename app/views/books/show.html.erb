@@ -4,7 +4,7 @@
       <p><%= flash[:notice] %></p>
     <% end %>
 
-<%= render 'books/list', books: @books %>
+<%= render 'books/list' %>
  
         <% if flash[:notice] %>
           <p><%= flash[:notice] %></p>
@@ -16,11 +16,11 @@
 		      <tr>
             <td><%= link_to "@user", user_path %></td>
             <!--名前と画像の表示方法がわからない-->
-            <td><%= link_to "@book.title", book_path(@book) %></td>
-            <td><%= @book.body %></td>
+            <td><%= link_to "@book.title", book_path(@book2) %></td>
+            <td><%= @book2.body %></td>
             <% if @user.id == current_user.id %>
               <!--<td><a class="btn-sm btn-success edit_book_38686" href="/books/38686/edit">Edit</a></td>-->
-              <td><%= link_to "Edit", edit_book_path(@book) %></td>
+              <td><%= link_to "Edit", edit_book_path(@book2) %></td>
               <!--<td><a data-confirm="本当に消しますか？" class="btn-sm btn-danger destroy_book_38686" rel="nofollow" data-method="delete" href="/books/38686">Destroy</a></td>-->
               <td><%= link_to "Destroy", books_path, method: :delete, data: { confirm: "本当に消しますか？" } %></td>
             <% end %>

@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    
-  <header class="navbar navbar-fixed-top navbar-inverse">
+
+  <header class="navbar fixed-top navbar-inverse">
     <div class="container">
       <nav class='nav navbar-nav navbar-left' >
         <span>Bookers</span>
@@ -37,7 +37,7 @@
             <li class><%= link_to 'Home', root_path %></li>
             <!--<li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li> -->
             <!--users_index-->
-            
+            <li class><%= link_to 'About', homes_about_path %></li>
             <!--<li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>-->
             <!--books_index-->
             <li class><%= link_to 'sign up', new_user_registration_path %></li>
@@ -49,9 +49,9 @@
       </nav>
     </div>
   </header>
-    
-    <%= yield %>
-    
+
+  <div class='container'><%= yield %></div>
+
   <footer>
     <div class='container'>
   	  <div class='row'>
@@ -61,6 +61,6 @@
       </div>
     </div>
   </footer>
-  
+
   </body>
 </html>

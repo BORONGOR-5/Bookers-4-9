@@ -4,13 +4,20 @@
       <p><%= flash[:notice] %></p>
     <% end %>
       <h2>User info</h2>
-      
-      <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
-          <p>Name</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>Image</p>
-          <input name="image" type="file">
-          <p>Introduction</p>
-          <input name="Introduction" value="<%= @user.introduction %>">
-          <input type="submit" value="Update User">
-  <% end %>
+
+ 
+
+
+
+      <%= form_with model:@user, local:true do |f| %>
+        <h4>Name</h4>
+        <%= f.text_field :name %>
+        <h4>Image</h4>
+        <%= f.attachment_field :profile_image %>
+        <h4>Introduction</h4>
+        <%= f.text_area :introduction %>
+        <%= f.submit "Update User" %>
+      <% end %>
+
+    </div>
+  </div>

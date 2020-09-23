@@ -2,7 +2,7 @@
   <div class='container'>
     <!--<p id="notice"></p>-->
 
-<%= render 'books/list', books: @books %>
+<%= render 'books/list' %>
 
       <div class='col-xs-9'>
         <h2>Books</h2>
@@ -19,8 +19,8 @@
           <tbody>
             <% @books.each do |book| %>
               <div class="book-item">
-                <td="user-profile_image_id"><%= link_to "user.profile_image_id", user_path(@user) %></td>
-                <td="book-title"><%= link_to "book.title", book_path(@book) %></td>
+                <td="user-profile_image_id"><%= link_to "user.profile_image_id", user_path(book.user) %></td>
+                <td="book-title"><%= link_to "book.title", book_path(book) %></td>
                 <td="book-body"><%= book.body %></td>
                 </div>
             <% end %>

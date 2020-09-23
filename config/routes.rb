@@ -7,14 +7,32 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
-  resources :homes
+  # resources :homes
   # , only
+
+    # get 'about', to: 'homes#about'
+  # get 'about' => 'homes#about'
   
-  post 'books_path' => 'books#create'
+
+  # resources :homes, only: [:show] do
+  # collection do
+  #   get :about
+  # end
+  # end
   
-  post '/users/#{@user.id}/update' => 'users#update'
-  
+  root 'homes#index'
+  get 'homes/about' => 'homes#about'
+  # resources :homes do
+  # collection do
+  #   get 'about'
+  # end
+  # end
+
+  # post 'books_path' => 'books#create'
+
+  # post '/users/#{@user.id}/update' => 'users#update'
+
 # Rails.application.routes.draw do
-  root 'home#index'
+
 # end
 end
