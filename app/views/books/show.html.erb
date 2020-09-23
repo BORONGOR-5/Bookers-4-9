@@ -4,51 +4,7 @@
       <p><%= flash[:notice] %></p>
     <% end %>
 
-
-    <div class='row'>
-      <div class='col-xs-3'>
-        <h2>User info</h2>
-          <table class='table'>
-            <tr>
-              <% if @user.image? %>                                                              
-                <%= image_tag @user.image.url %>
-              <% end %>
-              
-              <!--<th class="attachment user profile_image" src="/attachments/008169784d3c1eed0f940de16b5b6ebd100f218f/store/fill/100/100/ba831aee67a3aa5729ccd39b7ff93686cd0ed28cf22b7bdd6b84f8bb66f5/profile_image" alt="Profile image" />-->
-            </tr>
-            <tr>
-    	        <th>name</th>
-    	        <th class="name"><%= @user.name %></th>
-            </tr>
-            <tr>
-    	        <th>introduction</th>
-    	        <th class="introduction"><%= @user.introduction %></th>
-            </tr>
-            <% if @user.id == current_user.id %>
-              <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-            <% end %>
-          </table>
-
-        <h2>New book</h2>
-        <% if @book.errors.any? %>
-          <div id='error_explanation'>
-            <h2><%= @book.errors.count %> errors prohihbited this book from being saved:</h2>
-            <% @book.errors.full_messages.each do |msg| %>
-              <ul>
-                <li><%= msg %></li>
-              </ul>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%= form_with model: @book, url: '/books', local:true do |f| %>
-          <h3>Title</h3>
-          <%= f.text_field :title %>
-          <h3>Opinion</h3>
-          <%= f.text_area :body %>
-          <%= f.submit 'Create Book' %>
-        <% end %>
-      </div>
+<%= render 'books/list', books: @books %>
  
         <% if flash[:notice] %>
           <p><%= flash[:notice] %></p>

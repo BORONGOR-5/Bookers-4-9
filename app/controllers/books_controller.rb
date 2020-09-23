@@ -1,12 +1,19 @@
 class BooksController < ApplicationController
   
+  before_action :authenticate_user!
+  
   def index
     @books = Book.all
     @book = Book.new
+    @user = User.new 
+    # 本を投稿した全てのユーザー
   end
   
   def show
     @book = Book.find(params[:id])
+    @book = Book.new
+    @books = Book.all
+    
   end
   
   def edit
@@ -38,16 +45,23 @@ class BooksController < ApplicationController
   end
   
   def create
-      @book = Book.new(book_params[:id])   
+      @books = Book.all
+      @book = Book.new(book_params[:id])
+      @user = User.new
       # ここがエラー
     if @book.save
       flash[:notice] = "You have creatad book successfully."
       redirect_to book_path(@book.id)
     else
-      @books = Book.all
+      @book = Book.new
       render :index
     end
   end
+    
+  def list
+    
+  end
+  
   
   private
   def book_params

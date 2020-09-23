@@ -1,4 +1,4 @@
-user-show,user-index,book-show,book-index  
+<!--user-show,user-index,book-show,book-index  -->
   
   
     <div class='row'>
@@ -6,9 +6,7 @@ user-show,user-index,book-show,book-index
         <h2>User info</h2>
           <table class='table'>
             <tr>
-              <% if @user.profile_image? %>                                                              
-                <%= image_tag @user.profile_image.url %>
-              <% end %>
+              <!--プロフィール画像-->                                                            
             </tr>
             <tr>
     	        <th>name</th>
@@ -18,9 +16,11 @@ user-show,user-index,book-show,book-index
     	        <th>introduction</th>
     	        <th class="introduction"><%= @user.introduction %></th>
             </tr>
-            <% if @user.id == current_user.id %>
-              <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-            <% end %>
+              <th>
+                <% if @user.id == current_user.id %>
+                  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+                <% end %>
+              </th>
           </table>
 
         <h2>New book</h2>
@@ -35,7 +35,7 @@ user-show,user-index,book-show,book-index
           </div>
         <% end %>
 
-        <%= form_with model: @book, url: '/books', local:true do |f| %>
+        <%= form_with model: @book, url: '/books_path', local:true do |f| %>
           <h3>Title</h3>
           <%= f.text_field :title %>
           <h3>Opinion</h3>

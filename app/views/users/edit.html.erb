@@ -4,18 +4,6 @@
       <p><%= flash[:notice] %></p>
     <% end %>
       <h2>User info</h2>
-
-      <%= form_with model: @user, url: edit_book_path, local:true do |f| %>
-        <h4>Name</h4>
-        <%= f.text_field :name %>
-        <h4>Image</h4>
-        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
-        <h4>Introduction</h4>
-        <%= f.text_area :Introduction %>
-        <%= f.submit "Update User" %>
-      <% end %>
-      
-      
       
       <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
           <p>Name</p>
@@ -23,6 +11,6 @@
           <p>Image</p>
           <input name="image" type="file">
           <p>Introduction</p>
-          <input name="Introduction" value="<%= @user.email %>">
+          <input name="Introduction" value="<%= @user.introduction %>">
           <input type="submit" value="Update User">
   <% end %>

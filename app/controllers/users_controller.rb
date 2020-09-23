@@ -1,19 +1,27 @@
 class UsersController < ApplicationController
     
+    before_action :authenticate_user!
+    
     def index
+        @user = User.new
         @users = User.all
+        @book = Book.new
+        @books = Book.all
     end
     
     def show
         # @user = User.find(params[:id])
         @user = User.find(params[:id])
-      if @user.find(user_params)
-        flash[:notice] = "Signed in successfully."
-        redirect_to user_path(@user.id)
-      else
-        @users = User.all
-        render :index
-      end
+        @book = Book.new
+        @books = Book.all
+
+    #   if @user.find(user_params)
+    #     flash[:notice] = "Signed in successfully."
+    #     redirect_to user_path(@user.id)
+    #   else
+    #     @users = User.all
+    #     render :index
+    #   end
     end
         
         # @profile_image_id = @user.post_images.page(params[:page]).reverse_order
@@ -28,11 +36,6 @@ class UsersController < ApplicationController
 #       render :index
 #     end
 #   end
-  
-    
-    
-    
-    
 
     def edit
         @user = User.find(params[:id])
@@ -44,18 +47,18 @@ class UsersController < ApplicationController
         @user.update(user_params)
         redirect_to user_path(@user.id)
         
-        if params[:image]
-            #データベースに保存するファイル名はユーザーのid.jpgとする
-            @user.profile_image_id = "#{@user.id}.jpg"
-            image = params[:image]
-            File.binwrite("assets/images/#{@user.profile_image_id}",image.read)
-        end
+        # if params[:image]
+        #     #データベースに保存するファイル名はユーザーのid.jpgとする
+        #     @user.profile_image_id = "#{@user.id}.jpg"
+        #     image = params[:image]
+        #     File.binwrite("assets/images/#{@user.profile_image_id}",image.read)
+        # end
     end
     
     
     private
     def user_params
-      params.require(:user).permit(:name, :introduction,  :profile_image)
+      params.require(:user).permit(:name, :introduction, :profile_image)
     end
     
     
