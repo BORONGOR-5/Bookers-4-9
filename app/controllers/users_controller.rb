@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+    # before_action :correct_user, only: [:edit, :update]
     before_action :authenticate_user!
-
+    
     def index
         @user = User.new
         @users = User.all
@@ -40,6 +40,11 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
+      if @user == current_user
+        render "edit"
+      else
+        redirect_to users_path
+      end
     #   if @user.id == current_user.id
     #     redirect_to edit_user_path(@user)
     #   else
@@ -47,6 +52,11 @@ class UsersController < ApplicationController
     #     render :show
     #   end
     end
+
+    
+    
+    
+    
 
     def update
         @user = User.find(params[:id])
@@ -72,5 +82,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name , :profile_image, :introduction)
     end
 
-
+    def correct_user
+        user = User.find(params[:id])
+         if current_user != user
+          redirect_to users_path
+         end
+    end
 end

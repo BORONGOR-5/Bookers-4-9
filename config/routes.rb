@@ -12,16 +12,16 @@ Rails.application.routes.draw do
 
     # get 'about', to: 'homes#about'
   # get 'about' => 'homes#about'
-  
+
 
   # resources :homes, only: [:show] do
   # collection do
   #   get :about
   # end
   # end
-  
-  root 'homes#index'
-  get 'homes/about' => 'homes#about'
+
+  root 'home#index'
+  get 'home/about' => 'home#about'
   # resources :homes do
   # collection do
   #   get 'about'

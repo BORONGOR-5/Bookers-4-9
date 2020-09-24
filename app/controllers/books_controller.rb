@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
-
+  # before_action :correct_user, only: [:edit, :update]
   before_action :authenticate_user!
+  # before_action :set_book
+
+  def set_book
+    # @book = current_user.books.find_by(id: params[:id])
+  #   @book = current_user.books.find(params[:id])
+  end
 
   def index
     @books = Book.all
@@ -15,6 +21,8 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @user = @book2.user
+    
+    # redirect_to books_url if @book.blank?
     # @user2 = profile_image_id
 
 
@@ -23,7 +31,11 @@ class BooksController < ApplicationController
   def edit
       @book = Book.find(params[:id])
       # @book = Book.find(params[:id])
-
+      if @book.user == current_user
+        render "edit"
+      else
+        redirect_to books_path
+      end
 
   end
 
@@ -65,4 +77,19 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+  
+  # def correct_user
+  #   user = User.find(params[:id])
+  #   if current_user != user
+  #     redirect_to root_path
+  #   end
+  # end
+  
+  # def correct_user
+  #   @micropost = current_user.microposts.find_by(id: params[:id])
+  #     unless @micropost
+  #       redirect_to root_url
+  #     end
+  # end
+  
 end
