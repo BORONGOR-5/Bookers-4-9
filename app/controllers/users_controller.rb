@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         # @user = User.find(params[:id])
         @user = User.find(params[:id])
         @book = Book.new
-        @books = Book.all
+        @books = @user.books
         
     #   if @user.find(user_params)
     #     flash[:notice] = "Signed in successfully."
@@ -39,12 +39,12 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
-      if @user.id == current_user.id
-        redirect_to edit_user_path(@user)
-      else
-        @users = User.all
-        render :show
-      end
+    #   if @user.id == current_user.id
+    #     redirect_to edit_user_path(@user)
+    #   else
+    #     @users = User.all
+    #     render :show
+    #   end
     end
 
     def update
