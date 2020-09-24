@@ -14,22 +14,26 @@
         <h2>User info</h2>
         <table class='table'>
           <tr>
-            <%= attachment_image_tag @user, :profile_image, size: "70", fallback: "no_image.jpg" %>
+            <th><%= attachment_image_tag @user, :profile_image, size: "70", fallback: "no_image.jpg" %></th>
           </tr>
           <tr>
   	        <th>name</th>
-  	        <th class="name"><%= @user.name %></th>
+  	        <th><%= @user.name %></th>
           </tr>
           <tr>
   	        <th>introduction</th>
-  	        <th class="introduction"><%= @user.introduction %></th>
+  	        <th><%= @user.introduction %></th>
           </tr>
           <tr>
             <th>
-              <% if @user.id == current_user.id %>
+              <% if @user == current_user %>
                 <%= link_to edit_user_path(@user) do %>
-　                   <span class="fa fa-search search-btn col-xs-12 btn btn-default glyphicon glyphicon-wrench" aria-hidden="true"></span>
+　                   <span class="btn btn-default glyphicon glyphicon-wrench" aria-hidden="true"></span>
 　                   <!--<span class="fa fa-search search-btn"></span>-->
+                <% end %>
+              <% else %>
+                <%= link_to user_path(current_user) do %>
+                　    <span class="btn btn-default glyphicon glyphicon-wrench" aria-hidden="true"></span>
                 <% end %>
               <% end %>
             </th>
@@ -40,20 +44,15 @@
         
         <%= form_with model:@book, url: books_path, local:true do |f| %>
           <div class="field row">
-            <h3>Title</h3>
+            <h5>Title</h5>
             <%= f.text_field :title, class: "col-xs-12 book_title" %>
           </div>
           <div class="field row">
-            <h3>Opinion</h3>
-            <%= f.text_area :body, class: "col-xs-12 " %>
+            <h5>Opinion</h5>
+            <%= f.text_area :body, class: "col-xs-12 book_body" %>
           </div>  
           <div class="actions row">
-            <!--<div class="btn btn-primary col-xs-12">-->
             <%= f.submit 'Create Book',class: "btn btn-primary col-xs-12" %>
-            <!--</div>-->
           </div>
-            
-          
         <% end %>
-        
       </div>

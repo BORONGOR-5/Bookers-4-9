@@ -8,7 +8,7 @@
 		    <h2>Book detail</h2>
 		    <table class='table'>
 		      <tr>
-            <td><%= link_to @user, user_path %></td>
+            <td><%= link_to :profile_image, user_path(@user) %></td>
             <!--名前と画像の表示方法がわからない-->
             <td><%= link_to @book2.title, book_path(@book2) %></td>
             <td><%= @book2.body %></td>
@@ -16,7 +16,7 @@
               <!--<td><a class="btn-sm btn-success edit_book_38686" href="/books/38686/edit">Edit</a></td>-->
               <td><%= link_to "Edit", edit_book_path(@book2) %></td>
               <!--<td><a data-confirm="本当に消しますか？" class="btn-sm btn-danger destroy_book_38686" rel="nofollow" data-method="delete" href="/books/38686">Destroy</a></td>-->
-              <td><%= link_to "Destroy", books_path(@book2), method: :delete, data: { confirm: "本当に消しますか？" } %></td>
+              <td><%= link_to "Destroy", book_path(@book2), method: :delete, data: { confirm: "本当に消しますか？" } %></td>
             <% end %>
           </tr>
         </table>

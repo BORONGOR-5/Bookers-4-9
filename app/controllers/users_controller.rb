@@ -7,6 +7,7 @@ class UsersController < ApplicationController
         @users = User.all
         @book = Book.new
         @books = Book.all
+        
     end
 
     def show
@@ -49,8 +50,13 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
+      if @user.update(user_params)
+        flash[:notice] = "You have updated user successfully."
         redirect_to user_path(@user.id)
+      else
+        
+        render :edit
+      end
 
         # if params[:image]
         #     #データベースに保存するファイル名はユーザーのid.jpgとする

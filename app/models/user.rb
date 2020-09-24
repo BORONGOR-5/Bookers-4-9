@@ -13,6 +13,6 @@ class User < ApplicationRecord
   
   validates :introduction,  length: { maximum: 50 }
   
-  validates :email, :encrypted_password, presence: true
+  validates :email, presence: true
   
 end

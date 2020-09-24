@@ -3,8 +3,6 @@
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
-
-
     <%= render 'books/list' %>
 <!--books: @books-->
       <div class='col-xs-9'>
@@ -21,8 +19,8 @@
         <tbody>
           <% @books.each do |book| %>
             <!--<div class="user-show">-->
-            <tr>
-              <td><%= link_to "user.profile_image_id", user_path(@user) %></td>
+            <tr> 
+              <td><%= link_to attachment_image_tag(book.user, :profile_image, size: "38", fallback: "no_image.jpg"), user_path(@user) %></td>
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
             </tr>
