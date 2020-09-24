@@ -14,7 +14,7 @@
         <h2>User info</h2>
         <table class='table'>
           <tr>
-            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :profile_image, size: "70", fallback: "no_image.jpg" %>
           </tr>
           <tr>
   	        <th>name</th>
@@ -24,23 +24,36 @@
   	        <th>introduction</th>
   	        <th class="introduction"><%= @user.introduction %></th>
           </tr>
+          <tr>
             <th>
               <% if @user.id == current_user.id %>
                 <%= link_to edit_user_path(@user) do %>
-　                   <span class="fa fa-search search-btn glyphicon glyphicon-wrench" aria-hidden="true"></span>
-　                   
+　                   <span class="fa fa-search search-btn col-xs-12 btn btn-default glyphicon glyphicon-wrench" aria-hidden="true"></span>
 　                   <!--<span class="fa fa-search search-btn"></span>-->
                 <% end %>
               <% end %>
             </th>
+          </tr>
         </table>
 
         <h2>New book</h2>
+        
         <%= form_with model:@book, url: books_path, local:true do |f| %>
-          <h3>Title</h3>
-          <%= f.text_field :title %>
-          <h3>Opinion</h3>
-          <%= f.text_area :body %>
-          <%= f.submit 'Create Book' %>
+          <div class="field row">
+            <div class="col-xs-12 book_title">Title</div>
+            <%= f.text_field :title %>
+          </div>
+          <div class="field row">
+            <div class="col-xs-12 book_body">Opinion</div>
+            <%= f.text_area :body %>
+          </div>  
+          <div class="actions row">
+            <div class="btn btn-primary col-xs-12">
+            <%= f.submit 'Create Book' %>
+            </div>
+          </div>
+            
+          
         <% end %>
+        
       </div>

@@ -14,13 +14,15 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @user = @book2.user
+    # @user2 = profile_image_id
+    
 
   end
 
   def edit
       @book = Book.find(book_params[:id])
       # @book = Book.find(params[:id])
-      
+
     # if @book.save
     #   flash[:notice] = "You have updated book successfully."
     #   redirect_to book_path(@book.id)
