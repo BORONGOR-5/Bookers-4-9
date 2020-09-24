@@ -8,7 +8,7 @@
 		    <h2>Book detail</h2>
 		    <table class='table'>
 		      <tr>
-            <td><%= link_to :profile_image, user_path(@user) %></td>
+            <td><%= link_to @user.name, user_path(@user) %></td>
             <!--名前と画像の表示方法がわからない-->
             <td><%= link_to @book2.title, book_path(@book2) %></td>
             <td><%= @book2.body %></td>

@@ -3,10 +3,10 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   # before_action :set_book
 
-  def set_book
-    # @book = current_user.books.find_by(id: params[:id])
-  #   @book = current_user.books.find(params[:id])
-  end
+  # def set_book
+  #   # @book = current_user.books.find_by(id: params[:id])
+  # #   @book = current_user.books.find(params[:id])
+  # end
 
   def index
     @books = Book.all
