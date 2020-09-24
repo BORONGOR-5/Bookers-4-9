@@ -1,0 +1,31 @@
+<div class='body'>
+  <div class='container'>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+    <%= render 'books/list' %>
+      <div class='col-xs-9'>
+		    <h2>Book detail</h2>
+		    <table class='table'>
+		      <tr>
+            <td><%= link_to user_path(@user) do %>
+              <p><%= attachment_image_tag @user, :profile_image, size: "50", fallback: "no_image.jpg" %></p>
+              <p><%= @user.name %></p>
+            <% end %>
+            </td>
+            
+            <!--名前と画像の表示方法がわからない-->
+            <td><%= link_to @book2.title, book_path(@book2) %></td>
+            <td><%= @book2.body %></td>
+            <% if @user.id == current_user.id %>
+              <!--<td><a class="btn-sm btn-success edit_book_38686" href="/books/38686/edit">Edit</a></td>-->
+              <td><%= link_to "Edit", edit_book_path(@book2) %></td>
+              <!--<td><a data-confirm="本当に消しますか？" class="btn-sm btn-danger destroy_book_38686" rel="nofollow" data-method="delete" href="/books/38686">Destroy</a></td>-->
+              <td><%= link_to "Destroy", book_path(@book2), method: :delete, data: { confirm: "本当に消しますか？" } %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
