@@ -3,7 +3,7 @@
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
-    <%= render 'books/list' %>
+    <%= render 'books/list', book: @book, user: @user %>
 <!--books: @books-->
       <div class='col-xs-9'>
       <h2>Books</h2>
